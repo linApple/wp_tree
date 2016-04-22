@@ -121,4 +121,8 @@
 
     var tree1 = new WpTree("style1").initChainData(data).inner($("#tree1")).setEvent(event);
     
+###树的结构说明
+见上传的图片
+
+    
   

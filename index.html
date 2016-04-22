@@ -6,7 +6,6 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/tree-style.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
     <script type="text/javascript" src="js/wp-tree.js"></script>
 </head>
@@ -54,18 +53,18 @@ var data = [{
     }]
 }];
 var event = {
-    single: function() {
+    //这三个函数的this都指向node对象，可以根据node.level和node.type对不同等级的树以及展开和收缩时实现不同事件触发
+    single: function() {//没有子节点的click事件
         console.log("single:" + this.getText());
     },
-    expanded: function() {
+    expanded: function() {//节点展开时触发事件
         console.log("expanded:" + this.getText());
     },
-    close: function() {
+    close: function() {//节点收缩触发事件
         console.log("close:" + this.getText());
     }
 };
-var tree1 = new WpTree("style1").initChainData(data).inner($("#tree1"));
-tree1.setEvent(event);
+var tree1 = new WpTree("style1").initChainData(data).inner($("#tree1")).setEvent(event);
 /*var tree2 = new WpTree("style1").initChainData(data).inner($("#FlatTree2"));
 tree2.setEvent(event);*/
 </script>

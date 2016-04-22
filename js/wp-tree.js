@@ -318,16 +318,17 @@
 
 
     Style.style1 = {
-        getSingleNodeHtml: function(i) {
+        //这里的i是指树的层级，从第一级开始，这是考虑到有可能不同级的节点dom不一致
+        getSingleNodeHtml: function(i) { //没有子节点的节点html
             return "<div class='tree-item' style='display: block;'> " + "<i class = 'tree-dot' > </i>" + "<div class = 'tree-item-name' > Modern Elements </div>" + "</div>";
         },
-        getMulNodeHtml: function(i) {
+        getMulNodeHtml: function(i) { //有子节点的节点html
             return "   <div class='tree-folder' style='display: block;'>" + "<div class='tree-folder-header'>" + "<i class='fa fa-folder'></i>" + "<div class='tree-folder-name'>View Category" + "<div class='tree-actions'></div>" + "</div>" + "</div>" + "<div class='tree-folder-content' style='display: none;'>" + "</div>" + "<div class='tree-loader' style='display: none;'><img src='images/input-spinner.gif'></div>" + "</div> ";
         },
-        setSingleText: function(i, obj, text) {
+        setSingleText: function(i, obj, text) { //设置节点的text方法
             obj.children().eq(1).text(text);
         },
-        getSingleText: function(i, obj) {
+        getSingleText: function(i, obj) { //获取节点text方法
             return obj.children().eq(1).text();
         },
         setMulText: function(i, obj, text) {
@@ -336,15 +337,15 @@
         getMulText: function(i, obj) {
             return obj.children().eq(0).children().eq(1).text();
         },
-        expand: function(i, obj) {
+        expand: function(i, obj) { //展开节点的dom操作
             obj.children().eq(0).children().eq(0).removeClass("fa-folder").addClass("fa-folder-open");
             obj.children().eq(1).css("display", "block");
         },
-        close: function(i, obj) {
+        close: function(i, obj) { //收缩节点的dom操作
             obj.children().eq(0).children().eq(0).removeClass("fa-folder-open").addClass("fa-folder");
             obj.children().eq(1).css("display", "none");
         },
-        addChild: function(i, parent, child) {
+        addChild: function(i, parent, child) { //向一个父节点添加第一个子节点的dom操作
             parent.children().eq(1).append(child);
         }
     };

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/some.css">
+    <script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>
+    <script type="text/javascript" src="js/wp-tree.js"></script>
+</head>
+
+
+<body>
+    <div class="fixed nano nscroller has-scrollbar">
+        <div class="content" tabindex="0" style="right: -17px;">
+            <div class="header">
+                <button class="navbar-toggle" data-target=".treeview" data-toggle="collapse" type="button">
+                    <span class="fa fa-chevron-down"></span>
+                </button>
+                <h2 class="page-title">Tree View</h2>
+                <p class="description">Service description</p>
+            </div>
+            <ul class="nav nav-list treeview collapse">
+                <li class="">
+                    <label class="tree-toggler nav-header"><i class="fa fa-folder-open-o"></i> General</label>
+                    <ul class="nav nav-list tree" style="display: none;">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li>
+                            <label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Structure</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li>
+                                    <label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Plugins</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="open">
+                    <label class="tree-toggler nav-header"><i class="fa fa-folder-open-o"></i> Documentation</label>
+                    <ul class="nav nav-list tree" style="display: block;">
+                        <li><a href="#">Link</a></li>
+                        <li><a href="#">Link</a></li>
+                        <li class="">
+                            <label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Components</label>
+                            <ul class="nav nav-list tree" style="display: none;">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li>
+                                    <label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Speech API</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Charts</label>
+                            <ul class="nav nav-list tree">
+                                <li><a href="#">Link</a></li>
+                                <li><a href="#">Link</a></li>
+                                <li>
+                                    <label class="tree-toggler nav-header"><i class="fa fa-folder-o"></i> Reports</label>
+                                    <ul class="nav nav-list tree">
+                                        <li><a href="#">Link</a></li>
+                                        <li><a href="#">Link</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="pane" style="display: none;">
+            <div class="slider" style="height: 362px; top: 0px;"></div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var data = [{
+    text: "tree0",
+    child: [{
+        text: "tree00",
+        child: [{
+            text: "tree001"
+        }, {
+            text: "tree002"
+        }]
+    }, {
+        text: "tree01",
+        attribute: {
+            id: "11111"
+        }
+    }, {
+        text: "tree02"
+    }]
+}, {
+    text: "tree1",
+    child: [{
+        text: "tree10"
+    }, {
+        text: "tree11"
+    }, {
+        text: "tree12"
+    }]
+}, {
+    text: "tree2",
+    child: [{
+        text: "tree20"
+    }, {
+        text: "tree21"
+    }, {
+        text: "tree22"
+    }]
+}];
+var event = {
+    single: function() {
+        console.log("single:" + this.getText());
+    },
+    expanded: function() {
+        console.log("expanded:" + this.getText());
+    },
+    close: function() {
+        console.log("close:" + this.getText());
+    }
+};
+/*var tree1 = new WpTree("style1").initChainData(data).inner($("#tree1"));
+tree1.setEvent(event);*/
+</script>
+
+</html>

@@ -124,5 +124,15 @@
 ###树的结构说明
 见上传的图片
 
+###函数说明
+>tree.addNode(coordinate, text, attribute) 增加节点 节点位置，节点值，节点属性
+>tree.getNode(coordinate) 获取指定位置的节点
+>tree.deleteNode(coordinate) 删除指定位置的节点
+>node.remove 删除该节点
+>node.getAttribute(key) 获取该节点指定key对应的属性值
+>node.setAttribute(key,value) 设置该节点的属性
+
+
+
     
   

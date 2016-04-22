@@ -135,7 +135,7 @@
     Node.prototype.getAttribute = function(key) {
         return this.attribute[key];
     }
-    Node.prototype.getAttribute.setAttribute = function(key, value) {
+    Node.prototype.setAttribute = function(key, value) {
         this.attribute[key] = value;
     }
     Node.prototype.getText = function() {

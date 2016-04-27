@@ -90,9 +90,9 @@
     }
     Node.prototype.domApply = function() {
         if (this.pre) {
-            this.pre.obj.after(this.obj);
+            this.tree.style.after(this.level,this.pre.obj,this.obj);
         } else if (this.next) {
-            this.next.obj.before(this.obj);
+            this.tree.style.before(this.level,this.obj,this.next.obj);
         } else if (this.parent) {
             this.tree.style.addChild(this.parent.level, this.parent.obj, this.obj);
         } else {
@@ -186,7 +186,7 @@
                         that.style.addChild(p.level - 1, p.parent.obj, p.obj);
                     }
                 } else {
-                    p.pre.obj.after(p.obj);
+                    that.style.after(p.level,p.pre.obj,p.obj);
                 }
                 if (p.child) {
                     apply(p.child);
@@ -347,10 +347,14 @@
         },
         addChild: function(i, parent, child) { //向一个父节点添加第一个子节点的dom操作
             parent.children().eq(1).append(child);
+        },
+        before: function(i, newO, o) {//节点新节点插入树摸个节点之前的dom操作
+            o.before(newO);
+        },
+        after: function(i, o, newO) {//节点新节点插入树摸个节点之后的dom操作
+            o.after(newO);
         }
     };
-
-
 
     window.WpTree = Tree;
 

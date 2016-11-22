@@ -61,6 +61,12 @@
         },
         addChild: function(i, parent, child) { //向一个父节点添加第一个子节点的dom操作
             parent.children().eq(1).append(child);
+        }，
+        before: function(i, newO, o) {//节点新节点插入树摸个节点之前的dom操作
+            o.before(newO);
+        },
+        after: function(i, o, newO) {//节点新节点插入树摸个节点之后的dom操作
+            o.after(newO);
         }
     };
 >初始化数据结构
@@ -119,7 +125,35 @@
     
 >实例化树的对象并渲染dom,因为每个tree都是闭包实现，所以同一页面可多个不冲突
 
-    var tree1 = new WpTree("style1").initChainData(data).inner($("#tree1")).setEvent(event);
+    //这是一次性加载所有数据
+    var tree1 = new WpTree("style1").setEvent(event).initChainData(data).inner($("#tree1"));
+    
+    //逐级点击加载数据
+    var tree1 = new WpTree("style1").setEvent(event).setUrl(//设置每一级请求的url
+            function(node) {
+                if (node) {
+                    var bookId = "",
+                        catalogId = "";
+                    if (node.parent) {
+                        bookId = node.attribute.bookId;
+                        catalogId = node.attribute.id;
+                    } else {
+                        bookId = node.attribute.id;
+                    }
+                    return "./teacherPersonal/chapterCatalog?booksId=" + bookId + "&catalogId=" + catalogId;
+                } else {
+                    return "./teacherPersonal/booksCatalog?subjectCode=" + subjectCode + "&gradeCode=" + gradeCode;
+                }
+            }).formatData(function(data, node) {//数据格式转换
+            if (node) {
+                return changeData2(data);
+            } else {
+                return changeData1(data);
+            }
+        }).afterLoad(function(node) {//点击张开加载动画，数据加载完成后关闭动画
+            node && node.obj.children().eq(3).addClass("hidden");
+        }).autoLoad($("#books"));
+
     
 ###树的结构说明
 见上传的图片
